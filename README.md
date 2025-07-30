@@ -14,13 +14,13 @@ Study title: *Exploring the relationship between genetics and language acquisiti
 
 We focus on four main traits: self-reported multilingualism, foreign speech mimicking ability, foreign language learning ability and foreign accents understanding ability. The latter three are ranked on a scale of 1-4, easy-difficult. For multilingualism, we collected more detailed data to support its definition, which we determined as the total number of languages an individual speaks fluently. Fluency was reported for speaking and understanding ability on a scale from 1 to 10. We considered an individual to be fluent in a language if they scored 7 or above on both measures. For the additional phenotypes we utilized these traits: educational attainment, type of situation of multiple language usage (home, work, social club, professional etc), type of people of multiple language usage (speaking with family, friends, colleagues etc.) and age of acquisition (AoA) of a language.
 
-### [**Scripts & Steps Description**]{.smallcaps}
+### **Scripts & Steps Description**
 
 *\~\~\~\~\~\~\~ All scripts location: “/data/lag/workspaces/lg-lifelines/working_data/SCRIPTS/Phenotype_data/frysk"* *\~\~\~\~\~\~\~*
 
-[Main script]{.underline}: *phenotypic_analysis.sh*
+<ins>Main script</ins>: *phenotypic_analysis.sh*
 
-[Steps]{.underline}:
+<ins>Steps</ins>:
 
 1.  Extract each trait, merge all the variables/questions that belong to it in a separate data frame and label the NAs.
 
@@ -62,9 +62,9 @@ We focus on four main traits: self-reported multilingualism, foreign speech mimi
 
 ## Genetic analysis between the four main language acquisition traits.
 
-### [**Scripts & Steps Description**]{.smallcaps}
+### **Scripts & Steps Description**
 
-1.  [**SNP-based heritability (SNP-h2) analysis**]{.underline} to determine weather the individual traits have a genetic liability. Measured SNP-h2 using the genome-based restricted maximum likelihood (GREML) analysis implemented in the genome-wide complex trait analysis (GCTA) (<https://yanglab.westlake.edu.cn/software/gcta/#GREMLanalysis>) software.
+1.  <ins>**SNP-based heritability (SNP-h2) analysis**</ins> to determine weather the individual traits have a genetic liability. Measured SNP-h2 using the genome-based restricted maximum likelihood (GREML) analysis implemented in the genome-wide complex trait analysis (GCTA) (<https://yanglab.westlake.edu.cn/software/gcta/#GREMLanalysis>) software.
 
     *\~\~\~\~\~\~\~ All scripts location: “/data/lag/workspaces/lg-lifelines/working_data/SCRIPTS/*GCTA*/frysk/*SNP_h2*"* *\~\~\~\~\~\~\~*
 
@@ -72,9 +72,9 @@ We focus on four main traits: self-reported multilingualism, foreign speech mimi
 
     -   We compared different genotyped data batches and evaluated the impact of including or excluding the cognitive impairment filter in our datasets to maximize the number of genotyped individuals.
 
-        ![](images/SNPh2_bK02_language_acquisition_barplot-01.png)
+         ![Comparison Barplot](SNP-h2%20plots/SNPh2_bK02_language_acquisition_barplot.png)
 
-    -   [Steps]{.underline}:
+    -   <ins>Steps</ins>:
 
         1.  Prepare the genotype plink input files for the GRM construction GCTA (Script: *GCTA_prep_geno_gsa_UGLI2_Cyto_CHR.sh*).
 
@@ -94,13 +94,13 @@ We focus on four main traits: self-reported multilingualism, foreign speech mimi
 
     -   All the SNP-h2 plots are present here: *“/data/lag/workspaces/lg-lifelines/working_data/GCTA/frysk/GCTA/heritability/Graphs"*.
 
-2.  [**Genetic correlation (rG) analysis**]{.underline} to determine weather there are shared genetics across the traits. Measured rG using the genome-based restricted maximum likelihood (GREML) Bivariate analysis implemented in the genome-wide complex trait analysis (GCTA) (<https://yanglab.westlake.edu.cn/software/gcta/#BivariateGREMLanalysis>) software.
+2.  <ins>**Genetic correlation (rG) analysis**</ins> to determine weather there are shared genetics across the traits. Measured rG using the genome-based restricted maximum likelihood (GREML) Bivariate analysis implemented in the genome-wide complex trait analysis (GCTA) (<https://yanglab.westlake.edu.cn/software/gcta/#BivariateGREMLanalysis>) software.
 
     *\~\~\~\~\~\~\~ All scripts location: “/data/lag/workspaces/lg-lifelines/working_data/SCRIPTS/*GCTA*/frysk/*gen_corr*"* *\~\~\~\~\~\~\~*
 
     -   QC: MAF \> 0.01, HWE, pruning LD, r2 cut-off of 0.125
 
-    -   [Steps]{.underline}:
+    -   <ins>Steps</ins>:
 
         1.  Prepare the input files for the pheno, geno and covar files for GCTA GREML Bivariate analysis (a script per combination of traits) (Script: *GCTA_bivar\_\_prepare_covar_pheno_files_ugli_cogn_filtered_LN.sh*).
 
@@ -117,13 +117,13 @@ We focus on four main traits: self-reported multilingualism, foreign speech mimi
 
     -   All the rG plots are present here: *“/data/lag/workspaces/lg-lifelines/working_data/GCTA/frysk/GCTA/gen_cor/Graphs"*.
 
-3.  [**Polygenic score (PGS) analysis**]{.underline} to determine weather the trait outcomes can be predicted based on the trait-genetics. Measured PGS using the Polygenic Risk Scores via Continuous Shrinkage (PRS-CS) ([PRScs/README.md at master · getian107/PRScs · GitHub](https://github.com/getian107/PRScs/blob/master/README.md)) tool.
+3.  <ins>**Polygenic score (PGS) analysis**</ins> to determine weather the trait outcomes can be predicted based on the trait-genetics. Measured PGS using the Polygenic Risk Scores via Continuous Shrinkage (PRS-CS) ([PRScs/README.md at master · getian107/PRScs · GitHub](https://github.com/getian107/PRScs/blob/master/README.md)) tool.
 
     *\~\~\~\~\~\~\~ All scripts location: “/data/lag/workspaces/lg-lifelines/working_data/SCRIPTS/PGS"* *\~\~\~\~\~\~\~*
 
     -   Reference paper: <https://pmc.ncbi.nlm.nih.gov/articles/PMC7612115/#S19>
 
-    -   [Steps (]{.underline}<https://choishingwan.github.io/PRS-Tutorial/base/>) (Script: *PGS_steps.sh*):
+    -   <ins>Steps</ins> <https://choishingwan.github.io/PRS-Tutorial/base/>) (Script: *PGS_steps.sh*):
 
         1.  `QC the base sumstats data to get the filtered SNP’s beta values` (schoolgrades.E4, <https://ipsych.dk/en/research/downloads/>) (*“/data/lag/workspaces/lg-lifelines/working_data/PGS/frysk/PGS_prep/sumstats"*) for the PGS analysis (Script: *Reformat_external_sumstats.sh*).
 
