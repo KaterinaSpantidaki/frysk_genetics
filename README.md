@@ -1,4 +1,4 @@
-# **README – Data analysis pipeline**
+# **Frysk – Data analysis pipeline**
 
 Study title: *Exploring the relationship between genetics and language acquisition.*
 
