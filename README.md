@@ -1,6 +1,6 @@
 # **Frysk – Data analysis pipeline**
 
-Study title: *Exploring the relationship between genetics and language acquisition.*
+### *Exploring the relationship between genetics and language acquisition.*
 
 `Author: Katerina Spantidaki`
 
